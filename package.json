@@ -7,7 +7,7 @@
     "lint": "eslint ./src",
     "size": "size-limit",
     "build": "parcel build ./src/index.jsx --target node --out-dir ./bin --bundle-node-modules --no-source-maps",
-    "release": "echo ok",
+    "release": "np",
     "clean": "rimraf ./bin",
     "postbuild": "npm run size",
     "prebuild": "npm run clean && npm run lint"
@@ -40,6 +40,7 @@
     "ink": "^2.0.5",
     "ink-select-input": "^3.1.0",
     "ink-text-input": "^3.0.0",
+    "np": "^4.0.2",
     "react": "^16.8.4"
   },
   "size-limit": [

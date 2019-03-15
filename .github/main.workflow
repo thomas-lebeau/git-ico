@@ -14,6 +14,12 @@ action "Build" {
   args = "run build"
 }
 
+action "Master branch" {
+  uses = "actions/bin/filter@master"
+  needs = ["Build"]
+  args = "branch master"
+}
+
 action "Publish" {
   uses = "actions/npm@master"
   needs = ["Master branch"]
