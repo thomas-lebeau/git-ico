@@ -1,0 +1,71 @@
+{
+  "name": "git-ico",
+  "version": "0.0.0",
+  "description": "quickie boilerplate",
+  "scripts": {
+    "start": "parcel ./src/main.jsx --out-dir ./bin --target node",
+    "lint": "eslint ./src",
+    "size": "size-limit",
+    "build": "parcel build ./src/main.jsx --target node --out-dir ./bin --bundle-node-modules --no-source-maps",
+    "release": "echo ok",
+    "clean": "rimraf ./bin",
+    "postbuild": "npm run size",
+    "prebuild": "npm run clean && npm run lint"
+  },
+  "author": "",
+  "license": "MIT",
+  "bin": "./bin/main.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "parcel-bundler": "^1.12.1",
+    "parcel-plugin-shebang": "^1.2.3",
+    "prettier": "^1.16.4",
+    "size-limit": "^0.21.1"
+  },
+  "dependencies": {
+    "ink": "^2.0.5",
+    "ink-select-input": "^3.1.0",
+    "ink-text-input": "^3.0.0",
+    "react": "^16.8.4"
+  },
+  "size-limit": [
+    {
+      "path": [
+        "./bin/*.js"
+      ],
+      "limit": "1 MB",
+      "webpack": false,
+      "gzip": false
+    }
+  ],
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "prettier",
+      "prettier/react"
+    ],
+    "root": true,
+    "env": {
+      "es6": true
+    },
+    "rules": {
+      "no-void": "off",
+      "react/prop-types": "off"
+    }
+  },
+  "eslintIgnore": [
+    "bin/"
+  ]
+}
