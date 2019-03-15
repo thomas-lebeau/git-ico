@@ -3,21 +3,27 @@
   "version": "0.0.0",
   "description": "quickie boilerplate",
   "scripts": {
-    "start": "parcel ./src/main.jsx --out-dir ./bin --target node",
+    "start": "parcel ./src/index.jsx --out-dir ./bin --target node",
     "lint": "eslint ./src",
     "size": "size-limit",
-    "build": "parcel build ./src/main.jsx --target node --out-dir ./bin --bundle-node-modules --no-source-maps",
+    "build": "parcel build ./src/index.jsx --target node --out-dir ./bin --bundle-node-modules --no-source-maps",
     "release": "echo ok",
     "clean": "rimraf ./bin",
     "postbuild": "npm run size",
     "prebuild": "npm run clean && npm run lint"
   },
-  "author": "",
+  "author": {
+    "name": "Thomas Lebeau",
+    "email": "lebeau.thomas@gmail.com"
+  },
   "license": "MIT",
-  "bin": "./bin/main.js",
+  "bin": "./bin/index.js",
   "engines": {
     "node": ">=8"
   },
+  "files": [
+    "bin"
+  ],
   "devDependencies": {
     "eslint": "^5.15.2",
     "eslint-config-airbnb": "^17.1.0",
