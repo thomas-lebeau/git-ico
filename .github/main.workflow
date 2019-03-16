@@ -30,5 +30,5 @@ action "Publish" {
   uses = "actions/npm@master"
   needs = ["Release"]
   args = "run release"
-  secrets = ["NPM_AUTH_TOKEN"]
+  secrets = ["NPM_TOKEN"]
 }
