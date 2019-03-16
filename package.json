@@ -1,13 +1,13 @@
 {
   "name": "git-ico",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "description": "quickie boilerplate",
   "scripts": {
     "start": "parcel ./src/index.jsx --out-dir ./bin --target node",
     "lint": "eslint ./src",
     "size": "size-limit",
     "build": "parcel build ./src/index.jsx --target node --out-dir ./bin --bundle-node-modules --no-source-maps",
-    "release": "npm publish",
+    "release": "npm-publish-git-tag",
     "clean": "rimraf ./bin",
     "postbuild": "npm run size",
     "prebuild": "npm run clean && npm run lint"
@@ -17,11 +17,13 @@
     "email": "lebeau.thomas@gmail.com"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/thomas-lebeau/git-ico.git"
+    "type": "git",
+    "url": "git+https://github.com/thomas-lebeau/git-ico.git"
   },
   "license": "MIT",
-  "bin": "./bin/index.js",
+  "bin": {
+    "git-ico": "./bin/index.js"
+  },
   "engines": {
     "node": ">=8"
   },
@@ -44,6 +46,7 @@
     "ink": "^2.0.5",
     "ink-select-input": "^3.1.0",
     "ink-text-input": "^3.0.0",
+    "npm-publish-git-tag": "^3.0.3",
     "react": "^16.8.4"
   },
   "size-limit": [
@@ -68,6 +71,7 @@
     ],
     "root": true,
     "env": {
+      "node":true,
       "es6": true
     },
     "rules": {
@@ -77,5 +81,11 @@
   },
   "eslintIgnore": [
     "bin/"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/thomas-lebeau/git-ico/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "homepage": "https://github.com/thomas-lebeau/git-ico#readme",
+  "_id": "git-ico@0.0.0"
 }
