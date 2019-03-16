@@ -16,6 +16,10 @@
     "name": "Thomas Lebeau",
     "email": "lebeau.thomas@gmail.com"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/thomas-lebeau/git-ico.git"
+  },
   "license": "MIT",
   "bin": "./bin/index.js",
   "engines": {
