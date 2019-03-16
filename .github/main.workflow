@@ -24,4 +24,5 @@ action "Publish" {
   uses = "actions/npm@master"
   needs = ["Master branch"]
   args = "run release"
+  secrets = ["NPM_AUTH_TOKEN"]
 }
