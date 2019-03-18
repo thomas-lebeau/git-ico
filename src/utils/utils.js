@@ -1,21 +1,20 @@
-import { HEAD, N } from './constants';
-
 export const trim = (value = '') => value.trim();
 
 export const decorateBranch = rawBranch => {
-    const isCurrent = rawBranch[0] === HEAD;
-    const label = isCurrent ? rawBranch.slice(2) : rawBranch;
+    const [label, lastCommit, timeAgo, author] = rawBranch.split('\t');
 
     return {
         label,
         value: label,
-        isCurrent,
+        lastCommit,
+        timeAgo,
+        author,
     };
 };
 
 export const decorateBranches = rawBranches =>
     rawBranches
-        .split(N)
+        .split('\n')
         .map(trim)
         .filter(Boolean)
         .map(decorateBranch);
