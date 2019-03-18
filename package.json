@@ -1,6 +1,6 @@
 {
   "name": "git-ico",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "quickie boilerplate",
   "scripts": {
     "start": "parcel ./src/index.jsx --out-dir ./bin --target node",
@@ -71,7 +71,7 @@
     ],
     "root": true,
     "env": {
-      "node":true,
+      "node": true,
       "es6": true
     },
     "rules": {
