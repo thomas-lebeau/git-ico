@@ -1,6 +1,6 @@
-workflow "Build and Publish" {
+workflow "Build and Release" {
   on = "push"
-  resolves = ["Publish"]
+  resolves = ["Release"]
 }
 
 action "Install" {
@@ -21,14 +21,8 @@ action "Master branch" {
 }
 
 action "Release" {
-  uses = "hyper-expanse/semantic-deliver-action@master"
-  needs = ["Master branch"]
-  secrets = ["GITHUB_TOKEN"]
-}
-
-action "Publish" {
   uses = "actions/npm@master"
-  needs = ["Release"]
+  needs = ["Master branch"]
   args = "run release"
-  secrets = ["NPM_TOKEN"]
+  secrets = ["NPM_TOKEN", "GITHUB_TOKEN"]
 }

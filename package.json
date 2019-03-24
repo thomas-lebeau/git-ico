@@ -7,7 +7,7 @@
     "lint": "eslint ./src",
     "size": "size-limit",
     "build": "parcel build ./src/index.jsx --target node --out-dir ./bin --bundle-node-modules --no-source-maps",
-    "release": "npm-publish-git-tag",
+    "release": "semantic-release-github && npm-publish-git-tag",
     "clean": "rimraf ./bin",
     "postbuild": "npm run size",
     "prebuild": "npm run clean && npm run lint"
@@ -43,11 +43,12 @@
     "size-limit": "^0.21.1"
   },
   "dependencies": {
-    "ink": "^2.0.5",
+    "ink": "^2.0.6",
     "ink-select-input": "^3.1.0",
-    "ink-text-input": "^3.0.0",
+    "ink-text-input": "^3.1.0",
     "npm-publish-git-tag": "^3.0.3",
-    "react": "^16.8.4"
+    "react": "^16.8.4",
+    "semantic-release-github": "^5.0.0"
   },
   "size-limit": [
     {
