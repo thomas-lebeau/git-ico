@@ -11,6 +11,7 @@ export default function BranchesSelector({
     branches = [],
     onSelectBranch = NOOP,
     initialQuery = '',
+    lucky = false,
 }) {
     const [query, setQuery] = useState(initialQuery);
 
@@ -21,6 +22,8 @@ export default function BranchesSelector({
     const queryFilter = branch => branch.value.includes(query);
 
     if (!branches.length) return null;
+
+    if (lucky) onSelectBranch(branches[0]);
 
     return (
         <>

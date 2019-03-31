@@ -46,6 +46,7 @@
     "ink": "^2.1.0",
     "ink-select-input": "^3.1.0",
     "ink-text-input": "^3.1.0",
+    "meow": "^5.0.0",
     "npm-publish-git-tag": "^3.0.4",
     "react": "^16.8.6",
     "semantic-release-github": "^5.0.1"
