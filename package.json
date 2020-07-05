@@ -5,10 +5,7 @@
   "scripts": {
     "lint": "eslint ./src",
     "size": "size-limit",
-    "release": "npm publish",
-    "clean": "rimraf ./bin",
-    "postbuild": "npm run size",
-    "prebuild": "npm run clean && npm run lint"
+    "release": "npm publish"
   },
   "author": {
     "name": "Thomas Lebeau",
