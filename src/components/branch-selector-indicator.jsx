@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Color, Box } from 'ink';
 import { POINTER } from '../utils/constants';
 
@@ -9,3 +10,7 @@ export default function BranchesSelectorIndicator({ isSelected }) {
         </Box>
     );
 }
+
+BranchesSelectorIndicator.propTypes = {
+    isSelected: PropTypes.bool,
+};
