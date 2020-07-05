@@ -1,16 +1,22 @@
-import React from 'react';
-import { Color, Text } from 'ink';
+const React = require('react');
+const { Color, Text } = require('ink');
 
-import { QUOTE } from '../utils/constants';
+const { QUOTE } = require('../utils/constants.js');
 
-export const Error = ({ children }) => <Color red>{children}</Color>;
+const Error = ({ children }) => <Color red>{children}</Color>;
 
-export const Success = ({ children }) => <Color green>{children}</Color>;
+const Success = ({ children }) => <Color green>{children}</Color>;
 
-export const SelectedBranch = ({ children }) => (
+const SelectedBranch = ({ children }) => (
     <Text>
         Switched to branch {QUOTE}
         <Success>{children}</Success>
         {QUOTE}
     </Text>
 );
+
+module.exports = {
+    Error,
+    Success,
+    SelectedBranch,
+};

@@ -1,14 +1,17 @@
-import { exec } from 'child_process';
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+const { exec } = require('child_process');
 
-import { LIST_BRANCHES, CHANGE_BRANCH } from '../utils/constants';
-import { decorateBranches } from '../utils/utils';
-import { SelectedBranch, Error } from './messages';
-import BranchesSelector from './branch-selector';
-import { useApp } from 'ink';
+const React = require('react');
+const { useEffect, useState } = require('react');
+const { useApp } = require('ink');
+const PropTypes = require('prop-types');
+const importJsx = require('import-jsx');
 
-export default function Main({ initialQuery, lucky }) {
+const { LIST_BRANCHES, CHANGE_BRANCH } = require('../utils/constants.js');
+const { decorateBranches } = require('../utils/utils.js');
+const { SelectedBranch, Error } = importJsx('./messages.jsx');
+const BranchesSelector = importJsx('./branch-selector.jsx');
+
+function Main({ initialQuery, lucky }) {
     const [branches, setBranches] = useState([]);
     const [selectedBranch, setSelectedBranch] = useState();
     const [error, setError] = useState();
@@ -53,3 +56,5 @@ Main.propTypes = {
     initialQuery: PropTypes.string,
     lucky: PropTypes.bool,
 };
+
+module.exports = Main;

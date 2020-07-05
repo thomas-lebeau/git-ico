@@ -1,12 +1,10 @@
 {
   "name": "git-ico",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "quickie boilerplate",
   "scripts": {
-    "start": "parcel ./src/index.jsx --out-dir ./bin --target node",
     "lint": "eslint ./src",
     "size": "size-limit",
-    "build": "parcel build ./src/index.jsx --target node --out-dir ./bin --bundle-node-modules --no-source-maps",
     "release": "npm publish",
     "clean": "rimraf ./bin",
     "postbuild": "npm run size",
@@ -22,25 +20,22 @@
   },
   "license": "MIT",
   "bin": {
-    "git-ico": "./bin/index.js"
+    "git-ico": "./src/index.js"
   },
   "engines": {
     "node": ">=8"
   },
   "files": [
-    "bin"
+    "src"
   ],
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.20.3",
-    "npm-publish-git-tag": "^3.0.4",
-    "parcel-bundler": "^1.12.3",
-    "parcel-plugin-shebang": "^1.2.3",
     "prettier": "^1.16.4",
-    "semantic-release-github": "^5.0.1",
     "size-limit": "^0.22.0"
   },
   "dependencies": {
+    "import-jsx": "^4.0.0",
     "ink": "^2.7.1",
     "ink-select-input": "^3.1.2",
     "ink-text-input": "^3.3.0",
@@ -82,10 +77,8 @@
     },
     "parserOptions": {
       "ecmaVersion": 2019,
-      "sourceType": "module",
       "ecmaFeatures": {
-        "jsx": true,
-        "experimentalObjectRestSpread": true
+        "jsx": true
       }
     }
   },

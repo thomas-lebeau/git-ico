@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Color, Box, useInput } from 'ink';
-import SelectInput from 'ink-select-input';
-import TextInput from 'ink-text-input';
-import BranchesSelectorItem from './branch-selector-item';
-import BranchesSelectorIndicator from './branch-selector-indicator';
-import { NOOP, LABEL } from '../utils/constants';
+const React = require('react');
+const { useState } = require('react');
+const PropTypes = require('prop-types');
+const { Color, Box, useInput } = require('ink');
+const importJsx = require('import-jsx');
 
-export default function BranchesSelector({
+const { NOOP, LABEL } = require('../utils/constants.js');
+
+const TextInput = importJsx('ink-text-input').default;
+const SelectInput = importJsx('ink-select-input').default;
+const BranchesSelectorItem = importJsx('./branch-selector-item.jsx');
+const BranchesSelectorIndicator = importJsx('./branch-selector-indicator.jsx');
+
+function BranchesSelector({
     branches = [],
     initialQuery = '',
     lucky = false,
@@ -27,7 +31,7 @@ export default function BranchesSelector({
     if (lucky) onSelectBranch(branches[0]);
 
     return (
-        <>
+        <React.Fragment>
             <Box>
                 <Color magenta bold>
                     {LABEL}
@@ -41,7 +45,7 @@ export default function BranchesSelector({
                 onSelect={onSelectBranch}
                 limit={10}
             />
-        </>
+        </React.Fragment>
     );
 }
 
@@ -60,3 +64,5 @@ BranchesSelector.propTypes = {
     onAbort: PropTypes.func,
     onSelectBranch: PropTypes.func,
 };
+
+module.exports = BranchesSelector;

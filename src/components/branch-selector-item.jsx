@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Color, Box } from 'ink';
-import { LEFT } from '../utils/constants';
+const React = require('react');
+const PropTypes = require('prop-types');
+const { Color, Box } = require('ink');
 
-export default function BranchesSelectorItem({
+const { LEFT } = require('../utils/constants.js');
+
+function BranchesSelectorItem({
     isSelected,
     label,
     lastCommit,
@@ -43,3 +44,5 @@ BranchesSelectorItem.propTypes = {
     author: PropTypes.string,
     timeAgo: PropTypes.string,
 };
+
+module.exports = BranchesSelectorItem;

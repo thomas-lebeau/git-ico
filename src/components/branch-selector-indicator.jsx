@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Color, Box } from 'ink';
-import { POINTER } from '../utils/constants';
+const React = require('react');
+const PropTypes = require('prop-types');
+const { Color, Box } = require('ink');
 
-export default function BranchesSelectorIndicator({ isSelected }) {
+const { POINTER } = require('../utils/constants.js');
+
+function BranchesSelectorIndicator({ isSelected }) {
     return (
         <Box marginRight={1}>
             {isSelected ? <Color green>{POINTER}</Color> : ' '}
@@ -14,3 +15,5 @@ export default function BranchesSelectorIndicator({ isSelected }) {
 BranchesSelectorIndicator.propTypes = {
     isSelected: PropTypes.bool,
 };
+
+module.exports = BranchesSelectorIndicator;

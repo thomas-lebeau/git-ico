@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
-import React from 'react';
-import { render } from 'ink';
-import meow from 'meow';
-
-import Main from './components/main';
+const React = require('react');
+const { render } = require('ink');
+const meow = require('meow');
+const importJsx = require('import-jsx');
 
 const cli = meow(
     `
@@ -30,4 +29,6 @@ const cli = meow(
 const [initialQuery] = cli.input;
 const { lucky } = cli.flags;
 
-render(<Main initialQuery={initialQuery} lucky={lucky} />);
+const Main = importJsx('./components/main.jsx');
+
+render(React.createElement(Main, { initialQuery, lucky }));
