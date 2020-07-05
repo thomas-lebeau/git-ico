@@ -4,6 +4,5 @@ export const CHANGE_BRANCH = 'git checkout';
 export const LABEL = `Filter: `;
 export const QUOTE = "'";
 export const NOOP = () => {};
-export const ESC = '\x1B';
 export const POINTER = '❯';
 export const LEFT = '└─';

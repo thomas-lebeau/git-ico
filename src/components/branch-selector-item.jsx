@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Color, Box } from 'ink';
 import { LEFT } from '../utils/constants';
 
@@ -34,3 +35,11 @@ export default function BranchesSelectorItem({
         </Box>
     );
 }
+
+BranchesSelectorItem.propTypes = {
+    isSelected: PropTypes.bool,
+    label: PropTypes.string,
+    lastCommit: PropTypes.string,
+    author: PropTypes.string,
+    timeAgo: PropTypes.string,
+};

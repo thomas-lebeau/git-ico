@@ -1,0 +1,69 @@
+name: Release
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [8.x, 10.x, 12.x, 14.x]
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2-beta
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - uses: actions/cache@v2
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: ${{ runner.os }}-node-${{ matrix.node-version }}
+
+            - run: npm ci
+
+            - run: npm run build
+
+    release:
+        runs-on: ubuntu-latest
+
+        needs: build
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2-beta
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - uses: actions/cache@v2
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: ${{ runner.os }}-node-${{ matrix.node-version }}
+
+            - run: npm ci
+
+            - run: npm run build
+
+            - name: Bump version
+              id: bump-version
+              run: |
+                  git config --global user.name "github-actions[bot]"
+                  git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git checkout master
+                  npm version minor
+                  git push
+                  git push --tags
+                  echo ::set-output name=version::$(jq -r .version package.json)
+
+            - run: npm publish
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

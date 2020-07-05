@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import { Color, Box } from 'ink';
+import PropTypes from 'prop-types';
+import { Color, Box, useInput } from 'ink';
 import SelectInput from 'ink-select-input';
 import TextInput from 'ink-text-input';
-import useKeyHandler from '../hooks/useKeyHandler';
 import BranchesSelectorItem from './branch-selector-item';
 import BranchesSelectorIndicator from './branch-selector-indicator';
-import { ESC, NOOP, LABEL } from '../utils/constants';
+import { NOOP, LABEL } from '../utils/constants';
 
 export default function BranchesSelector({
     branches = [],
-    onSelectBranch = NOOP,
     initialQuery = '',
     lucky = false,
+    onAbort = NOOP,
+    onSelectBranch = NOOP,
 }) {
     const [query, setQuery] = useState(initialQuery);
 
-    useKeyHandler(key => {
-        if (key === ESC) setQuery('');
+    useInput((input, key) => {
+        if (key.escape) query ? setQuery('') : onAbort();
     });
 
     const queryFilter = branch => branch.value.includes(query);
@@ -43,3 +44,19 @@ export default function BranchesSelector({
         </>
     );
 }
+
+BranchesSelector.propTypes = {
+    branches: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.string,
+            value: PropTypes.string,
+            lastCommit: PropTypes.string,
+            timeAgo: PropTypes.string,
+            author: PropTypes.string,
+        })
+    ),
+    initialQuery: PropTypes.string,
+    lucky: PropTypes.bool,
+    onAbort: PropTypes.func,
+    onSelectBranch: PropTypes.func,
+};
