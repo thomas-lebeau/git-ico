@@ -15,8 +15,17 @@ const SelectedBranch = ({ children }) => (
     </Text>
 );
 
+const StayOnBranch = ({ children }) => (
+    <Text>
+        Stay on branch {QUOTE}
+        <Success>{children}</Success>
+        {QUOTE}
+    </Text>
+);
+
 module.exports = {
     Error,
     Success,
     SelectedBranch,
+    StayOnBranch,
 };

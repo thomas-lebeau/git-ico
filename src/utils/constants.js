@@ -1,3 +1,4 @@
+const CURRENT_BRANCH = 'git symbolic-ref --short -q HEAD';
 const LIST_BRANCHES =
     "git for-each-ref --sort='-committerdate' --format='%(refname:short)%09%(subject)%09%(committerdate:relative)%09%(authorname)' refs/heads | sed -e 's-refs/heads/--'";
 const CHANGE_BRANCH = 'git checkout';
@@ -9,6 +10,7 @@ const POINTER = '❯';
 const LEFT = '└─';
 
 module.exports = {
+    CURRENT_BRANCH,
     LIST_BRANCHES,
     CHANGE_BRANCH,
     LABEL,

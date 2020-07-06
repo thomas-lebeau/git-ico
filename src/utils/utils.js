@@ -20,6 +20,7 @@ const decorateBranches = rawBranches =>
         .map(decorateBranch);
 
 module.exports = {
+    trim,
     decorateBranch,
     decorateBranches,
 };
